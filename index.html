@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>전용하 · Product Manager</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --paper: #ffffff;
+    --ink: #0a0a0a;
+    --ink-strong: #000000;
+    --ink-soft: #404040;
+    --ink-mute: #737373;
+    --ink-faint: #a3a3a3;
+    --line: #ebebeb;
+    --line-strong: #d4d4d4;
+    --accent: #2563eb;
+    --accent-soft: #eff6ff;
+    --accent-ink: #1d4ed8;
+    --chip: #f4f4f5;
+    --metric-bg: #fef3c7;
+    --metric-ink: #78350f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+    padding: 48px 20px;
+  }
+
+  .page {
+    max-width: 1080px;
+    margin: 0 auto;
+    background: var(--paper);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 24px 60px -20px rgba(0,0,0,0.12);
+    overflow: hidden;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 64px 64px 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+    letter-spacing: 0;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(37,99,235,0.18);
+  }
+  .hero-name {
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: var(--ink-strong);
+    margin-bottom: 16px;
+  }
+  .hero-role {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink-mute);
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+  }
+  .hero-tagline {
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    max-width: 720px;
+    margin-bottom: 36px;
+  }
+  .hero-tagline span {
+    color: var(--accent);
+  }
+  .hero-meta {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .hero-meta-label {
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .hero-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .hero-meta-value a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .hero-meta-value a:hover { color: var(--accent); }
+
+  /* ============ LAYOUT ============ */
+  .layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+  }
+  .sidebar {
+    padding: 48px 32px 56px 64px;
+    border-right: 1px solid var(--line);
+    background: #fafafa;
+  }
+  .main {
+    padding: 48px 64px 56px 48px;
+    min-width: 0;
+  }
+
+  /* ============ SECTIONS ============ */
+  .section { margin-bottom: 40px; }
+  .section:last-child { margin-bottom: 0; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--ink-strong);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  /* ============ SIDEBAR: STRENGTHS ============ */
+  .strengths {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .strength-item {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding-left: 22px;
+    position: relative;
+  }
+  .strength-item::before {
+    content: counter(s, decimal-leading-zero);
+    counter-increment: s;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0;
+  }
+  .strengths { counter-reset: s; }
+  .strength-item strong {
+    color: var(--ink-strong);
+    font-weight: 600;
+  }
+
+  /* ============ SIDEBAR: SKILLS ============ */
+  .skill-group { margin-bottom: 18px; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-group-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .skill-tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 10px;
+    background: var(--chip);
+    border-radius: 6px;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+  }
+  .skill-tag.accent {
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+  }
+
+  /* ============ SIDEBAR: EDUCATION ============ */
+  .edu-item {
+    padding: 16px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .edu-school {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-strong);
+    margin-bottom: 4px;
+    letter-spacing: -0.015em;
+  }
+  .edu-detail {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .edu-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: -0.01em;
+  }
+
+  /* ============ ABOUT ============ */
+  .about p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+    letter-spacing: -0.005em;
+  }
+  .about p:last-child { margin-bottom: 0; }
+  .about strong {
+    color: var(--ink-strong);
+    font-weight: 600;
+  }
+
+  /* ============ COMPANY ============ */
+  .company {
+    margin-bottom: 36px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .company:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .company-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .company-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink-strong);
+  }
+  .company-name .sub {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-mute);
+    letter-spacing: -0.01em;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #dcfce7;
+    color: #166534;
+    padding: 3px 9px;
+    border-radius: 999px;
+    letter-spacing: -0.005em;
+  }
+  .badge::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #16a34a;
+  }
+  .company-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: -0.01em;
+  }
+  .company-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+  .company-roles span {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    padding: 3px 10px;
+    background: var(--chip);
+    border-radius: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ============ PROJECTS ============ */
+  .projects {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .project {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px 24px;
+    background: var(--paper);
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+  }
+  .project:hover {
+    border-color: var(--line-strong);
+    box-shadow: 0 8px 24px -12px rgba(0,0,0,0.08);
+  }
+  .project-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .project-title-wrap { min-width: 0; flex: 1; }
+  .project-year {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .project-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--ink-strong);
+    line-height: 1.3;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+  .project-tag {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    padding: 3px 8px;
+    background: var(--chip);
+    border-radius: 4px;
+    letter-spacing: -0.005em;
+  }
+
+  .project-block {
+    margin-bottom: 12px;
+  }
+  .project-block:last-child { margin-bottom: 0; }
+  .block-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .block-content {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    letter-spacing: -0.005em;
+  }
+  .block-content ul {
+    list-style: none;
+    padding: 0;
+  }
+  .block-content li {
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 3px;
+  }
+  .block-content li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 9px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--ink-faint);
+  }
+  .block-content strong {
+    color: var(--ink-strong);
+    font-weight: 600;
+  }
+  .metric {
+    display: inline-block;
+    font-size: 12.5px;
+    font-weight: 600;
+    background: var(--metric-bg);
+    color: var(--metric-ink);
+    padding: 1px 7px;
+    border-radius: 4px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    padding: 24px 64px;
+    border-top: 1px solid var(--line);
+    background: #fafafa;
+    font-size: 12px;
+    color: var(--ink-mute);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 860px) {
+    body { padding: 16px 12px; }
+    .hero { padding: 40px 28px 32px; }
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { padding: 36px 28px; border-right: none; border-bottom: 1px solid var(--line); }
+    .main { padding: 36px 28px; }
+    .project { padding: 18px 18px; }
+    .footer { padding: 20px 28px; }
+  }
+
+  /* ============ PRINT (PDF) ============ */
+  @media print {
+    @page { size: A4; margin: 10mm; }
+    body { background: white; padding: 0; font-size: 10.5px; }
+    .page { box-shadow: none; max-width: none; border-radius: 0; }
+    .hero { padding: 20px 24px 16px; }
+    .hero-name { font-size: 32px; margin-bottom: 8px; }
+    .hero-role { font-size: 13px; margin-bottom: 14px; }
+    .hero-tagline { font-size: 16px; margin-bottom: 18px; }
+    .hero-eyebrow { margin-bottom: 14px; padding: 4px 10px; font-size: 10px; }
+    .hero-meta { gap: 20px; }
+    .layout { grid-template-columns: 230px 1fr; }
+    .sidebar { padding: 24px 18px 24px 24px; background: #fafafa; }
+    .main { padding: 24px 24px 24px 20px; }
+    .section { margin-bottom: 24px; }
+    .section-title { font-size: 17px; margin-bottom: 14px; }
+    .about p { font-size: 11px; line-height: 1.6; }
+    .company { margin-bottom: 22px; padding-bottom: 18px; }
+    .company-name { font-size: 15px; }
+    .company-period { font-size: 10px; }
+    .company-roles span { font-size: 10px; padding: 2px 7px; }
+    .project { page-break-inside: avoid; padding: 14px 16px; }
+    .projects { gap: 12px; }
+    .project-title { font-size: 13px; }
+    .project-year { font-size: 9.5px; }
+    .project-tag { font-size: 9.5px; padding: 2px 6px; }
+    .block-label { font-size: 9.5px; margin-bottom: 4px; }
+    .block-content { font-size: 10.5px; line-height: 1.55; }
+    .metric { font-size: 10px; padding: 0 5px; }
+    .strength-item { font-size: 10.5px; }
+    .skill-tag { font-size: 10px; padding: 3px 8px; }
+    .edu-item { padding: 12px; }
+    .edu-school { font-size: 12px; }
+    .edu-detail { font-size: 10.5px; }
+    .edu-date { font-size: 9.5px; }
+    .footer { display: none; }
+    .project:hover { box-shadow: none; transform: none; border-color: var(--line); }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero-eyebrow">Available · Product Manager · 2026</div>
+    <h1 class="hero-name">전용하</h1>
+    <div class="hero-role">Product Manager / 9+ years</div>
+    <p class="hero-tagline">
+      문제를 찾고, <span>AI와 데이터</span>로<br>
+      해결방안을 실행하는 PM
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Email</span>
+        <span class="hero-meta-value"><a href="mailto:yonseha@naver.com">yonseha@naver.com</a></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Phone</span>
+        <span class="hero-meta-value">010-9358-0186</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Experience</span>
+        <span class="hero-meta-value">9년+</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Domain</span>
+        <span class="hero-meta-value">Streaming · Live Commerce</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ LAYOUT ============ -->
+  <div class="layout">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+
+      <div class="section">
+        <div class="section-label">Core Strengths</div>
+        <ul class="strengths">
+          <li class="strength-item"><strong>AI 도구 기획 프로세스</strong> 구축 — PRD·프로토타입 제작 n일 → n시간 단축</li>
+          <li class="strength-item"><strong>추천 시스템(ML 기반)</strong> 서비스 기획 및 A/B 테스트 고도화</li>
+          <li class="strength-item">B2C <strong>Android, iOS, PC/Mobile Web</strong> 서비스 기획·운영</li>
+          <li class="strength-item"><strong>데이터 분석</strong>을 통한 서비스 개선 (Elasticsearch, Metabase)</li>
+          <li class="strength-item"><strong>인프라 전환 프로젝트</strong> 리딩 (Wowza → AWS IVS), 다직군 협업</li>
+          <li class="strength-item"><strong>스트리밍·VOD 서비스 / 사업 경력 9년</strong></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Skills</div>
+        <div class="skill-group">
+          <div class="skill-group-name">Design / Prototyping</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Adobe XD</span>
+            <span class="skill-tag">PowerPoint</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Data / Analytics</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Elasticsearch</span>
+            <span class="skill-tag">Metabase</span>
+            <span class="skill-tag">Excel</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">AI Tools</div>
+          <div class="skill-tags">
+            <span class="skill-tag accent">Claude</span>
+            <span class="skill-tag accent">Gemini</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Methods</div>
+          <div class="skill-tags">
+            <span class="skill-tag">A/B Testing</span>
+            <span class="skill-tag">PRD</span>
+            <span class="skill-tag">Jira</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Education</div>
+        <div class="edu-item">
+          <div class="edu-school">고려사이버대학교</div>
+          <div class="edu-detail">AI 데이터 과학부</div>
+          <div class="edu-date">2021.08 — 2025.08 · 졸업</div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <main class="main">
+
+      <!-- About -->
+      <div class="section">
+        <div class="section-label">About</div>
+        <h2 class="section-title">자기소개</h2>
+        <div class="about">
+          <p>
+            MAU 600만의 플랫폼 <strong>SOOP(아프리카TV)</strong>에서 약 9년간 동영상 플랫폼 기획과 운영을 담당하며, 기획자, 개발자, 디자이너는 물론 머신러닝 개발자, 데이터 엔지니어 등 다양한 조직과 유기적으로 협업해왔습니다.
+          </p>
+          <p>
+            추천 알고리즘 기획 및 A/B 테스트를 통한 단계적 고도화, 사용자 경험 개선을 위한 홈/전시 영역 UI/UX 개편부터 쇼츠 Feature 등 전략을 시작으로 우선순위를 정의하는 프로젝트의 전 과정을 리드하며 플랫폼 성장에 기여했습니다. 저의 강점은 <strong>커뮤니케이션 역량</strong>이며, 목적하고자 하는 방향성에 대해 다양한 이해관계자들과 싱크업하려 매순간 노력합니다.
+          </p>
+          <p>
+            현재 그립컴퍼니에서는 <strong>AI 도구(Claude, Gemini)를 기획 프로세스에 전면 도입</strong>하여 기존 며칠 소요되던 PRD·프로토타입 제작을 N시간 이내로 단축하였고, AI 기반 자동 썸네일 생성, 라이브 방송 하이라이트 숏폼 자동 생성 등 AI를 활용한 신규 서비스를 라이브스튜디오에 기획·추진하고 있습니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div class="section">
+        <div class="section-label">Experience</div>
+        <h2 class="section-title">경력 사항</h2>
+
+        <!-- Company: Grip -->
+        <div class="company">
+          <div class="company-header">
+            <div class="company-name">그립컴퍼니 <span class="badge">현재</span></div>
+            <div class="company-period">2025.09 — 재직중</div>
+          </div>
+
+          <div class="projects">
+
+            <article class="project">
+              <div class="project-top">
+                <div class="project-title-wrap">
+                  <span class="project-year">2025 — 2026</span>
+                  <h3 class="project-title">라이브 방송 제어 대시보드</h3>
+                </div>
+                <div class="project-tags">
+                  <span class="project-tag">상위/상세기획</span>
+                  <span class="project-tag">AI TF 운영</span>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">배경 및 문제</div>
+                <div class="block-content">
+                  <ul>
+                    <li>셀러가 영업과 방송 운영을 동시에 수행 → 세일즈 화력 분산</li>
+                    <li>방송 중 상품 설정·이벤트 조작으로 Dead Air 발생, 시청자 이탈</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">해결 방안</div>
+                <div class="block-content">
+                  <ul>
+                    <li>라이브 스트리밍 관리, 상품 관리, 실시간 채팅, 대시보드 등</li>
+                    <li>셀러는 판매에만 집중, 운영은 매니저가 원격 제어하는 구조 설계</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">AI 활용 기획 프로세스</div>
+                <div class="block-content">
+                  <ul>
+                    <li>Claude, Gemini 활용 PRD 초안 작성 → AI 기반 프로토타입 생성</li>
+                    <li>기존 Figma/XD 기반 화면설계 방식 대비 기획 사이클 대폭 단축</li>
+                    <li>PRD → 프로토타입 완성: <span class="metric">기존 3일 → 1시간 이내</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">기대 성과</div>
+                <div class="block-content">
+                  <ul>
+                    <li>구매 전환율(CVR) <span class="metric">+10~20%</span> 추가 개선 목표</li>
+                    <li>연 매출 200억 원 기준, 운영 병목 해소로 연 <span class="metric">+20억 원 GMV</span> 기대</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <div class="project-title-wrap">
+                  <span class="project-year">2025 — 2026</span>
+                  <h3 class="project-title">방송 종료 시 '브릿지' A/B 실험</h3>
+                </div>
+                <div class="project-tags">
+                  <span class="project-tag">가설 수립</span>
+                  <span class="project-tag">A/B 실험 설계</span>
+                  <span class="project-tag">추천 로직</span>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">배경 및 문제</div>
+                <div class="block-content">
+                  <ul>
+                    <li>방송 종료 시 다음 행동을 안내하지 않아 결정 공백 발생</li>
+                    <li>시청자가 재탐색 피로를 느끼며 이탈 → 트래픽·구매 기회 손실</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">해결 방안</div>
+                <div class="block-content">
+                  <ul>
+                    <li>방송 종료 시점에 5초 카운트다운 자동재생 넛지 레이어 제공</li>
+                    <li>추천 로직 우선순위 설계: 히어로 셀러 &gt; 팔로우 &gt; 최근 구매 &gt; 인기</li>
+                    <li>Variant A(현행 유지) vs Variant B(자동재생+넛지) A/B 실험</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">성과 및 결과</div>
+                <div class="block-content">
+                  <ul>
+                    <li>유효시청 전환율(100초 이상) <span class="metric">+30%</span> 달성</li>
+                    <li>하루 약 1만 명 방송 종료 유저 중 추가 방송 자연 전환 확인</li>
+                    <li>유효시청 → 동접 상승 → GMV 기회 확대 선순환 구조 확인</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Company: SOOP -->
+        <div class="company">
+          <div class="company-header">
+            <div class="company-name">SOOP <span class="sub">(구 아프리카TV)</span></div>
+            <div class="company-period">2016.05 — 2025.09 · 9년 2개월</div>
+          </div>
+          <div class="company-roles">
+            <span>2025.01–2025.07 · VOD사업팀 · 리드</span>
+            <span>2016.05–2024.12 · VOD서비스팀 · 과장</span>
+          </div>
+
+          <div class="projects">
+
+            <article class="project">
+              <div class="project-top">
+                <div class="project-title-wrap">
+                  <span class="project-year">2023 — 2024</span>
+                  <h3 class="project-title">숏폼 스토리 서비스 런칭</h3>
+                </div>
+                <div class="project-tags">
+                  <span class="project-tag">사업계획</span>
+                  <span class="project-tag">상위/상세기획</span>
+                  <span class="project-tag">로직 설계</span>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">배경 및 문제</div>
+                <div class="block-content">
+                  <ul>
+                    <li>롱폼 영상의 초기 이탈 발견 (10분 내)</li>
+                    <li>롱폼 → 숏폼 하이라이트 영상 확보 필요</li>
+                    <li>플랫폼 접속 대비 LIVE 시청 89%인 반면 VOD 시청 비율 약 30%</li>
+                    <li>숏폼 서비스의 활성화 필요</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">해결 방안</div>
+                <div class="block-content">
+                  <ul>
+                    <li>지난 실시간 방송을 숏폼 스토리로 함축 → 기존 유저들이 생성하는 숏폼을 활용하여 하나의 스토리로 생성</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">성과 및 결과</div>
+                <div class="block-content">
+                  <ul>
+                    <li>전체 VOD 뷰어십 <span class="metric">+15%</span> 상승</li>
+                    <li>즐겨찾기, MY+ 탭 <span class="metric">+60%</span> 상승</li>
+                    <li>검색, 채널 등 다양한 유입 퍼널 평균 <span class="metric">+20%</span> 상승</li>
+                    <li>플랫폼 접속 대비 VOD 시청 비율 <span class="metric">30% → 35%</span></li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <div class="project-title-wrap">
+                  <span class="project-year">2022 — 2023</span>
+                  <h3 class="project-title">숏폼 서비스 'Catch' 런칭</h3>
+                </div>
+                <div class="project-tags">
+                  <span class="project-tag">상위/상세기획</span>
+                  <span class="project-tag">추천 로직 설계</span>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">배경 및 문제</div>
+                <div class="block-content">
+                  <ul>
+                    <li>APP 내 하단 탭바 VOD 메뉴 유입 비율이 5개 메뉴 중 2.5%</li>
+                    <li>주요 KPI VOD 뷰어십 약 1천만 목표 (당시 25% 달성률)</li>
+                    <li>숏츠, 릴스와 같은 짧은 세로 영상이 활성화되던 시기</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">해결 방안</div>
+                <div class="block-content">
+                  <ul>
+                    <li>SOOP(아프리카TV)만의 숏폼 서비스 개발 실행</li>
+                    <li>유저 참여를 활용한 숏폼 확보 전략</li>
+                    <li>유저참여, 콘텐츠 기반 등 숏폼 알고리즘 개발</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">성과 및 결과</div>
+                <div class="block-content">
+                  <ul>
+                    <li>전체 뷰어십 <span class="metric">+300%</span> 향상 (KPI 초과달성)</li>
+                    <li>VOD 타입 중 숏폼 비중 <span class="metric">70%</span></li>
+                    <li>신규 숏폼 타입 추가 확보 <span class="metric">+50%</span></li>
+                    <li>숏폼 BM 구축 및 매출 확보</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">A/B Test 결과</div>
+                <div class="block-content">
+                  <ul>
+                    <li>A 그룹: 유저 선호도의 batch 기반 (기존)</li>
+                    <li>B 그룹: 유저 선호도 batch 70% + 실시간 30%</li>
+                    <li>B 그룹: 시청시간 <span class="metric">+50%</span>, 시청완료율 <span class="metric">+15%</span>, 좋아요 <span class="metric">+50%</span></li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <div class="project-title-wrap">
+                  <span class="project-year">2021 — 2022</span>
+                  <h3 class="project-title">VOD 메뉴 개편 · 개인화 추천</h3>
+                </div>
+                <div class="project-tags">
+                  <span class="project-tag">상위 기획</span>
+                  <span class="project-tag">알고리즘 기획·검증</span>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">배경 및 문제</div>
+                <div class="block-content">
+                  <ul>
+                    <li>개인화 시대에 맞춰 추천 로직 개발을 통한 트래픽 증대 필요</li>
+                    <li>LIVE 스트리밍이 없는 시간 동안 VOD로 트래픽 방어 필요</li>
+                    <li>1인당 시청 횟수 약 10회 → 최소 15회까지 증대 목표</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">해결 방안</div>
+                <div class="block-content">
+                  <ul>
+                    <li>단순 sorting이 아닌 '취향'에 맞는 콘텐츠 알고리즘 제공</li>
+                    <li>추천에 따른 유저 친화적 UI/UX 제공</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">주요 알고리즘</div>
+                <div class="block-content">
+                  <ul>
+                    <li>콘텐츠 기반 필터링, 협업 필터링, 행동 기반 추천, 실시간 필터링</li>
+                    <li>이용자별 콘텐츠 참여 기록을 분석하여 세그먼트별 알고리즘 적용</li>
+                    <li>지표: 재생완료율, 재생 물리적 시간, 카테고리 다양성, 최신영상, 스트리머 선호도, 주카테고리</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">성과 및 결과</div>
+                <div class="block-content">
+                  <ul>
+                    <li>콘텐츠 노출 대비 CTR <span class="metric">+20%</span></li>
+                    <li>VOD 메뉴 방문 지표 <span class="metric">+50%</span></li>
+                    <li>라이트 유저 세그먼트 VOD 참여 지표 <span class="metric">+50%</span></li>
+                    <li>B그룹(롱폼 인기 10% + 숏폼 40% + 취향 50%) 시청횟수 <span class="metric">기존 대비 약 2배</span> 성장</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <div class="project-title-wrap">
+                  <span class="project-year">2020 — 2021</span>
+                  <h3 class="project-title">썸네일 자막 기능 개발</h3>
+                </div>
+                <div class="project-tags">
+                  <span class="project-tag">상위/상세기획</span>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">배경 및 문제</div>
+                <div class="block-content">
+                  <ul>
+                    <li>잘 꾸며진 썸네일은 콘텐츠 클릭률(CTR)이 높을 것이라는 가설</li>
+                    <li>유저의 VOD 생성 문화가 있지만, 포토샵보다 Web 기능 제공 필요</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">해결 방안</div>
+                <div class="block-content">
+                  <ul>
+                    <li>썸네일 꾸미기 기능 웹페이지 개발 실행</li>
+                    <li>포토샵보다 쉬운 UI/UX 구성, 이용자 동선 기반 접근성 고려</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">성과 및 결과</div>
+                <div class="block-content">
+                  <ul>
+                    <li>편집 안한 썸네일 영상 클릭 진입: 일 평균 10만 회</li>
+                    <li>편집한 썸네일 영상 클릭 진입: 일 평균 <span class="metric">20만 회 (2배 상승)</span></li>
+                    <li>가설 검증: 기존 유사 콘텐츠 사이에서 CTR <span class="metric">+10%</span> 확인</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <div class="project-title-wrap">
+                  <span class="project-year">2020</span>
+                  <h3 class="project-title">멤버십 이모티콘 개발</h3>
+                </div>
+                <div class="project-tags">
+                  <span class="project-tag">상세 기획</span>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">배경 및 문제</div>
+                <div class="block-content">
+                  <ul>
+                    <li>유저 이용 불편 문의</li>
+                    <li>멤버십(구독) 이용자만 사용 가능한 이모티콘이 LIVE에만 반영</li>
+                    <li>동영상 및 게시글 댓글에 멤버십 이모티콘 확대 필요</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">개발 시 유의사항</div>
+                <div class="block-content">
+                  <ul>
+                    <li>LIVE 채팅의 유저 경험 위주의 사용성 고려</li>
+                    <li>LIVE, 동영상, 커뮤니티 간 '최근사용이모티콘' 데이터 연동</li>
+                    <li>로그 및 통계 설계</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">성과 및 결과</div>
+                <div class="block-content">
+                  <ul>
+                    <li>VOD 및 커뮤니티 멤버십 이모티콘 관련 유저 문의사항 X</li>
+                    <li>VOD 멤버십 이모티콘 문화 정착</li>
+                    <li>VOD를 통한 멤버십 가입 매출 상승 기회 마련</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-top">
+                <div class="project-title-wrap">
+                  <span class="project-year">2020</span>
+                  <h3 class="project-title">공중파 VOD 프로모션 페이지</h3>
+                </div>
+                <div class="project-tags">
+                  <span class="project-tag">아이데이션</span>
+                  <span class="project-tag">상세기획</span>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">배경 및 문제</div>
+                <div class="block-content">
+                  <ul>
+                    <li>아프리카TV의 콘텐츠는 모두 '실시간 기반 방송'</li>
+                    <li>공중파 영상을 수급했으나, 유저 니즈가 적은 상태</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">해결 방안</div>
+                <div class="block-content">
+                  <ul>
+                    <li>서비스를 알리기 위한 내부 마케팅 - 공중파 VOD 프로모션 실행</li>
+                    <li>실시간 참여 프로모션 페이지 개발</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-block">
+                <div class="block-label">성과 및 결과</div>
+                <div class="block-content">
+                  <ul>
+                    <li>실시간 순위 노출로 경쟁 유도 → 공중파영상 DAU <span class="metric">+1400% 증가</span></li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <span>전용하 · Product Manager</span>
+    <span class="footer-mono">Last updated · 2026.03</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
